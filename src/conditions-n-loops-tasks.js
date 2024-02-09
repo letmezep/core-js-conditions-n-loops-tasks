@@ -21,8 +21,12 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  let answer = Boolean(true);
+  if (number < 0) {
+    answer = Boolean(false);
+  }
+  return answer;
 }
 
 /**
@@ -38,8 +42,16 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  let number = a;
+  if (number < b) {
+    number = b;
+  }
+
+  if (number < c) {
+    number = c;
+  }
+  return number;
 }
 
 /**
@@ -82,8 +94,16 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  let answer = Boolean(false);
+  if (a + b > c) {
+    if (b + c > a) {
+      if (a === b || b === c || a === c) {
+        answer = Boolean(true);
+      }
+    }
+  }
+  return answer;
 }
 
 /**
@@ -100,10 +120,37 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let answer = '';
+  let answer2 = '';
+  let num2 = num;
+  if (num >= 10) {
+    answer = 'X';
+    if (num >= 20) {
+      answer += 'X';
+    }
+    if (num >= 30) {
+      answer += 'X';
+    }
+    num2 = num % 10;
+  }
+  for (let i = 0; i < num2; i += 1) {
+    answer2 += 'I';
+  }
+  if (num2 === 4) {
+    answer2 = 'IV';
+  }
+  if (num2 >= 5) {
+    answer2 = 'V';
+    for (let i = 5; i < num2; i += 1) {
+      answer2 += 'I';
+    }
+  }
+  if (num2 === 9) {
+    answer2 = 'IX';
+  }
+  return answer + answer2;
 }
-
 /**
  * Converts a number to a string, replacing digits with words.
  * In this task, the use of methods of the String and Array classes is not allowed.
