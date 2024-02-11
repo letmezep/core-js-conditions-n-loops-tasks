@@ -359,8 +359,45 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  const matrix = [];
+  let n = 1;
+  for (let i = 0; i < size; i += 1) {
+    matrix[i] = new Array(size);
+  }
+  for (let i = 0; i < size; i += 1) {
+    for (let j = 0; j < size; j += 1) {
+      matrix[i][j] = 0;
+    }
+  }
+
+  for (let m = 0; m < size; m += 1) {
+    for (let i = m; i < size - m; i += 1) {
+      if (matrix[m][i] === 0) {
+        matrix[m][i] = n;
+        n += 1;
+      }
+    }
+    for (let i = m; i < size - m; i += 1) {
+      if (matrix[i][size - m - 1] === 0) {
+        matrix[i][size - m - 1] = n;
+        n += 1;
+      }
+    }
+    for (let i = size - m - 2; i >= 0; i -= 1) {
+      if (matrix[size - m - 1][i] === 0) {
+        matrix[size - m - 1][i] = n;
+        n += 1;
+      }
+    }
+    for (let i = size - 2 - m; i >= m + 1; i -= 1) {
+      if (matrix[i][m] === 0) {
+        matrix[i][m] = n;
+        n += 1;
+      }
+    }
+  }
+  return matrix;
 }
 
 /**
@@ -440,6 +477,57 @@ function shuffleChar(/* str, iterations */) {
  */
 function getNearestBigger(/* number */) {
   throw new Error('Not implemented');
+  // let tempArray = [];
+  // let n = number;
+  // let result = 0;
+  // const numberArray = [];
+  // const nextNumberArray = [];
+  // while (n > 0) {
+  //   numberArray.unshift(n % 10);
+  //   n = Math.floor(n / 10);
+  // }
+  // let k = number;
+  // let ktemp = k;
+  // let count = 0;
+  // while (count <= numberArray.length) {
+  //   k += 1;
+  //   ktemp = k;
+  //   while (ktemp > 0) {
+  //     nextNumberArray.unshift(ktemp % 10);
+  //     ktemp = Math.floor(ktemp / 10);
+  //   }
+
+  //   count = 0;
+  // let tempArray = [];
+  // for (let i = 0; i < nextNumberArray.length; i += 1) {
+  //   tempArray.push(nextNumberArray[i]);
+  // }
+  //   for (let i = 0; i < nextNumberArray.length; i += 1) {
+  //     if (numberArray.includes(nextNumberArray[i])) {
+  //       count += 1;
+  //     }
+  //   }
+  // }
+  // console.log('number ', number);
+  // console.log('count ', count);
+  // result = k;
+  // while (result === 0 || k < 1000000) {
+  //   k += 1;
+  //   while (k > 0) {
+  //     nextNumberArray.unshift(k % 10);
+  //     k = Math.floor(k / 10);
+  //   }
+
+  //   count = 1;
+  //   for (let i = 0; i < nextNumberArray.length; i += 1) {
+  //     numberArray.includes(nextNumberArray[i]);
+  //     count += 1;
+  //   }
+  //   if (count === numberArray.length - 1) {
+  //     result = k;
+  //   }
+  // }
+  // return result;
 }
 
 module.exports = {
